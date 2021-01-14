@@ -31,9 +31,8 @@ public abstract class Player {
     }
 
     public void setRightHandWeapon(Weapon newWeapon) {
-        if (this.canEquipWeapon(newWeapon)) {
-            this.rightHandWeapon = newWeapon;
-        }
+        if (!this.canEquipWeapon(newWeapon)) return;
+        this.rightHandWeapon = newWeapon;
     }
 
     public int getHealthPoints() {
