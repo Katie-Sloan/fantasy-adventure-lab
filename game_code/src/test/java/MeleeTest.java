@@ -67,4 +67,9 @@ public class MeleeTest {
         kenny.startHitting(dwarf);
         assertEquals(11, dwarf.getHealthPoints());
     }
+    @Test
+    public void canCalculateHpAfterHit_dead() {
+        dwarf.startHitting(kenny);
+        assertEquals(0, kenny.getHealthPoints());
+    }
 }
