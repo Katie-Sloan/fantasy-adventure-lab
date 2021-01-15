@@ -8,16 +8,18 @@ import static org.junit.Assert.assertEquals;
 
 public class MeleeTest {
     Melee dwarf;
+    Melee kenny;
 
     @Before
     public void setUp() {
-        dwarf = new Melee("Jeff", Weapon.AXE, 5, CharacterClass.DWARF, Weapon.BIG_AXE);
+        dwarf = new Melee("Zsolt", Weapon.AXE, 20, CharacterClass.DWARF, Weapon.BIG_AXE);
+        kenny = new Melee("Kenny", Weapon.AXE, 5, CharacterClass.DWARF, Weapon.BIG_AXE);
     }
 
     // test constructor
     @Test
     public void canGetName() {
-        assertEquals("Jeff", dwarf.getName());
+        assertEquals("Zsolt", dwarf.getName());
     }
     @Test
     public void canGetRightHandWeapon() {
@@ -29,7 +31,7 @@ public class MeleeTest {
     }
     @Test
     public void canGetHealthPoints() {
-        assertEquals(5, dwarf.getHealthPoints());
+        assertEquals(20, dwarf.getHealthPoints());
     }
     @Test
     public void isDwarfClass() {
@@ -61,8 +63,8 @@ public class MeleeTest {
     }
     // test attack points
     @Test
-    public void canCalculateAttackPoints() {
-        assertEquals(9, dwarf.getAttackPoints());
+    public void canCalculateHpAfterHit() {
+        kenny.startHitting(dwarf);
+        assertEquals(11, dwarf.getHealthPoints());
     }
-
 }

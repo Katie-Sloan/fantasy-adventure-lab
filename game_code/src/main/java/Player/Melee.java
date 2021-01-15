@@ -2,17 +2,24 @@ package Player;
 
 import Player.Enums.CharacterClass;
 import Player.Enums.Weapon;
-import behaviour.IHit;
+import behaviour.Hit;
+import behaviour.Move;
 
-public class Melee extends Player implements IHit {
+public class Melee extends Player {
 
+    private Hit hit;
+    private Move move;
     private Weapon leftHandWeapon;
-
+    private Player target;
     public Melee(String name, Weapon rightHandWeapon, int healthPoints, CharacterClass characterClass, Weapon leftHandWeapon) {
         super(name, rightHandWeapon, healthPoints, characterClass);
         this.leftHandWeapon = leftHandWeapon;
+        hit = new Hit(controller);
+        move = new Move(controller);
     }
-
+                                    //########## START Getters and Setters ##########//
+    public Player getTarget() { return target; }
+    public void setTarget(Player target) { this.target = target; }
     public Weapon getLeftHandWeapon() {
         return leftHandWeapon;
     }
@@ -22,14 +29,15 @@ public class Melee extends Player implements IHit {
             this.leftHandWeapon = newWeapon;
         }
     }
+                                    //########## END Getters and Setters ##########//
 
-    public void hit() {} // Delete me soon
 
-//    public void hit(MythicalCreature opponent) {
-//        opponent.takeDamage(getAttackPoints());
-//    }
-//
-    public int getAttackPoints() {
+
+
+
+    // POO DONT WANT TO SEE IT
+    @Override
+    protected int getAttackPoints() {
         return this.leftHandWeapon.getDamage() + this.getRightHandWeapon().getDamage();
     }
 }

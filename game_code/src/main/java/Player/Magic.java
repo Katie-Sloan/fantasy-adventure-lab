@@ -3,11 +3,10 @@ package Player;
 import Player.Enums.CharacterClass;
 import Player.Enums.Spell;
 import Player.Enums.Weapon;
-import behaviour.ISpell;
 
 import java.util.ArrayList;
 
-public class Magic extends Player implements ISpell {
+public class Magic extends Player{
     private ArrayList<Spell> spells;
 //    private MythicalCreature pet;
 

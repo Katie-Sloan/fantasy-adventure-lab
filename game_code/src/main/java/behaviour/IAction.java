@@ -1,6 +1,6 @@
 package behaviour;
 
 public interface IAction {
-    void StartAction();
-    void StopAction();
+    void setAction();
+    void stopAction();
 }
