@@ -11,16 +11,13 @@ public class PlayerController {
 
     public void setCurrentAction(IAction currentAction) {
         this.currentAction = currentAction;
-        System.out.println("the current action is " + currentAction);
     }
 
-    public void stopCurrentAction(){
-        System.out.println("We are now stopping " + currentAction);
+    public void stopCurrentAction() {
+        if (this.currentAction == null) {
+            return;
+        }
         this.currentAction.stopAction();
+        this.currentAction = null;
     }
-
-    public void printWhatCurrentActionIs() {
-        System.out.println("current action is " + currentAction);
-    }
-
 }

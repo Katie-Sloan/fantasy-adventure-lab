@@ -12,7 +12,6 @@ public class Hit implements IAction {
     }
 
     public void setAction() {
-        System.out.println("Getting this far");
         controller.setCurrentAction(this);
     }
 
@@ -21,12 +20,8 @@ public class Hit implements IAction {
     }
 
     public void startHitting(int attackPoints, Player target) {
-//        setAction();
+        setAction();
         target.takeDamage(attackPoints);
     }
-
-    private void giveDamageToTarget() {
-    }
-
 
 }
