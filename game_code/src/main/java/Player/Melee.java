@@ -38,6 +38,6 @@ public class Melee extends Player {
     // POO DONT WANT TO SEE IT
     @Override
     protected int getAttackPoints() {
-        return this.leftHandWeapon.getDamage() + this.getRightHandWeapon().getDamage();
+        return this.leftHandWeapon.getPower() + this.getRightHandWeapon().getPower();
     }
 }

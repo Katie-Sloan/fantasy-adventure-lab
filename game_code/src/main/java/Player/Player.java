@@ -1,7 +1,6 @@
 package Player;
 
 import Player.Enums.CharacterClass;
-import Player.Enums.HealItem;
 import Player.Enums.Weapon;
 import behaviour.Heal;
 import behaviour.Hit;
@@ -79,7 +78,7 @@ public abstract class Player {
         return weapon.getClassNumber() == this.CHARACTER_CLASS.getCharacterClass();
     }
     protected int getAttackPoints() {
-        return this.getRightHandWeapon().getDamage();
+        return this.getRightHandWeapon().getPower();
     }
 
 

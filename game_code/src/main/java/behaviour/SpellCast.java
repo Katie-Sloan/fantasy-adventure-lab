@@ -44,11 +44,11 @@ public class SpellCast implements IAction {
     }
 
     private void startCastingHeal(SpellType spell, Player target) {
-        target.heal(spell.getDamage());
+        target.heal(spell.getPower() + player.getRightHandWeapon().getPower());
     }
 
     private int calculateDamage(SpellType spell) {
-        return spell.getDamage() + player.getRightHandWeapon().getDamage();
+        return spell.getPower() + player.getRightHandWeapon().getPower();
     }
 
     public int spellCount() {

@@ -6,16 +6,16 @@ public enum SpellType {
     WINGARDIUM_LEVIOSA(3, SpellCategory.ATTACKING),
     HEALIARMUS(1, SpellCategory.HEALING);
 
-    private final int damage;
+    private final int power;
     private final SpellCategory type;
 
-    SpellType(int damage, SpellCategory type) {
-        this.damage = damage;
+    SpellType(int power, SpellCategory type) {
+        this.power = power;
         this.type = type;
     }
 
-    public int getDamage() {
-        return this.damage;
+    public int getPower() {
+        return this.power;
     }
 
     public SpellCategory getType() {

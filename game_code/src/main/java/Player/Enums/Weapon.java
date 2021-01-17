@@ -1,7 +1,5 @@
 package Player.Enums;
 
-import Player.Player;
-
 public enum Weapon {
 
     AXE(1, 3),
@@ -13,15 +11,15 @@ public enum Weapon {
     BIG_STICK(3, 6);
 
     private final int classNumber;
-    private final int damage;
+    private final int power;
 
-    Weapon(int classNumber, int damage) {
+    Weapon(int classNumber, int power) {
         this.classNumber = classNumber;
-        this.damage = damage;
+        this.power = power;
     }
 
-    public int getDamage() {
-        return this.damage;
+    public int getPower() {
+        return this.power;
     }
 
     public int getClassNumber() {

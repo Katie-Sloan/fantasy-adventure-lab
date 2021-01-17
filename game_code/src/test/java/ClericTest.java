@@ -7,6 +7,8 @@ import Player.Melee;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 public class ClericTest {
 
     Magic juan;
@@ -23,7 +25,11 @@ public class ClericTest {
     @Test
     public void canHealWithSpell(){
         john.spellCast.addSpell(SpellType.HEALIARMUS);
-
+        john.startHitting(colin);
+        john.startHitting(colin);
+        assertEquals(4, colin.getHealthPoints());
+        john.spellCast.startCastingSpell(SpellType.HEALIARMUS, colin);
+        assertEquals(8, colin.getHealthPoints());
     }
 
 }
