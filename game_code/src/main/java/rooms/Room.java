@@ -1,8 +1,6 @@
 package rooms;
 
 import Entity.Enums.HealItem;
-import Entity.mythicalcreatures.Ogre;
-import behaviour.Heal;
 import behaviour.IMythicalCreature;
 
 import java.util.ArrayList;
@@ -48,6 +46,7 @@ public class Room {
     }
 
     public IMythicalCreature removeEnemy(int index) {
+        if (index >= (this.enemies.size() )) return null;
         IMythicalCreature enemy = this.enemies.remove(index);
         if(isCompleted()) {
             setCompleted(true);
@@ -104,6 +103,7 @@ public class Room {
     }
 
     public IMythicalCreature getEnemy(int indexPosition) {
+        if(getEnemyCount() == 0) return null;
         return this.enemies.get(indexPosition);
     }
 
@@ -113,5 +113,9 @@ public class Room {
 
     public int getGemCount() {
         return this.gems.size();
+    }
+
+    public int getEnemyCount() {
+        return this.enemies.size();
     }
 }

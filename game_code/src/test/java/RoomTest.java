@@ -7,6 +7,7 @@ import org.junit.Test;
 import rooms.Room;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class RoomTest {
 
@@ -15,7 +16,7 @@ public class RoomTest {
 
     @Before
     public void setUp() {
-        codeClan = new Room ("CodeClan", null, null, null);
+        codeClan = new Room("CodeClan", null, null, null);
         robert = new Ogre("Robert", Weapon.CLUB, 20, CharacterClass.MONSTER, null);
     }
 
@@ -39,8 +40,19 @@ public class RoomTest {
     }
 
     @Test
-    public void canAddGemsPilesToGems() {
+    public void canAddGemPilesToRoom() {
         codeClan.addGemPile(3);
         assertEquals(1, this.codeClan.getGemCount());
+    }
+
+    @Test
+    public void canRemoveEnemiesFromRoom() {
+        System.out.println(this.codeClan.getEnemyCount());
+        codeClan.addEnemy(robert);
+        System.out.println(this.codeClan.getEnemyCount());
+        assertEquals(robert, this.codeClan.getEnemy(0));
+        codeClan.removeEnemy(0);
+        System.out.println(this.codeClan.getEnemyCount());
+        assertNull(this.codeClan.getEnemy(0));
     }
 }
