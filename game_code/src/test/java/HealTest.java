@@ -25,5 +25,4 @@ public class HealTest {
         roosa.heal.startHealing(HealItem.POTION);
         assertEquals(23, roosa.getHealthPoints());
     }
-
 }

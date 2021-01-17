@@ -2,12 +2,11 @@ import Player.Enums.CharacterClass;
 import Player.Enums.SpellType;
 import Player.Enums.Weapon;
 import Player.Magic;
-import Player.Melee;
-import behaviour.Spell;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class MagicTest {
 
@@ -25,38 +24,38 @@ public class MagicTest {
 
     @Test
     public void canAddSpell() {
-        juan.addSpell(SpellType.EXPELLIARMUS);
-        assertEquals(1, juan.spellCount());
+        juan.spellCast.addSpell(SpellType.EXPELLIARMUS);
+        assertEquals(1, juan.spellCast.spellCount());
     }
 
     @Test
     public void canGetSpell() {
-        juan.addSpell(SpellType.EXPELLIARMUS);
-        assertEquals(SpellType.EXPELLIARMUS, juan.getSpell(0));
+        juan.spellCast.addSpell(SpellType.EXPELLIARMUS);
+        assertEquals(SpellType.EXPELLIARMUS, juan.spellCast.getSpell(0));
     }
 
     @Test
     public void hasSpell__true() {
-        juan.addSpell(SpellType.EXPELLIARMUS);
-        assertEquals(SpellType.EXPELLIARMUS, juan.hasSpell(SpellType.EXPELLIARMUS));
+        juan.spellCast.addSpell(SpellType.EXPELLIARMUS);
+        assertEquals(SpellType.EXPELLIARMUS, juan.spellCast.hasSpell(SpellType.EXPELLIARMUS));
     }
     @Test
     public void hasSpell__false() {
-        assertEquals(null, juan.hasSpell(SpellType.EXPELLIARMUS));
+        assertNull(juan.spellCast.hasSpell(SpellType.EXPELLIARMUS));
     }
 
     @Test
     public void canCalculateHpAfterHit() {
-        juan.addSpell(SpellType.WINGARDIUM_LEVIOSA);
-        SpellType spell = juan.getSpell(0);
-        juan.spell.startCastingSpell(spell, zsolt);
+        juan.spellCast.addSpell(SpellType.WINGARDIUM_LEVIOSA);
+        SpellType spell = juan.spellCast.getSpell(0);
+        juan.spellCast.startCastingSpell(spell, zsolt);
         assertEquals(15, zsolt.getHealthPoints());
     }
     @Test
     public void canCalculateHpAfterHit_dead() {
-        zsolt.addSpell(SpellType.WINGARDIUM_LEVIOSA);
-        SpellType spell = zsolt.getSpell(0);
-        zsolt.spell.startCastingSpell(spell, juan);
+        zsolt.spellCast.addSpell(SpellType.WINGARDIUM_LEVIOSA);
+        SpellType spell = zsolt.spellCast.getSpell(0);
+        zsolt.spellCast.startCastingSpell(spell, juan);
         assertEquals(0, juan.getHealthPoints());
     }
 }

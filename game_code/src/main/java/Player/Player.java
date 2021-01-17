@@ -5,6 +5,7 @@ import Player.Enums.HealItem;
 import Player.Enums.Weapon;
 import behaviour.Heal;
 import behaviour.Hit;
+import behaviour.Move;
 
 public abstract class Player {
     protected PlayerController controller;
@@ -16,6 +17,7 @@ public abstract class Player {
     private int gems;
     private final CharacterClass CHARACTER_CLASS;
     public Heal heal;
+    private Move move;
 
     public Player(String name, Weapon rightHandWeapon, int healthPoints, CharacterClass characterClass) {
         this.CHARACTER_CLASS = characterClass;
@@ -25,7 +27,8 @@ public abstract class Player {
         this.gems = 0;
         controller = new PlayerController();
         hit = new Hit(controller);
-        this.heal = new Heal(controller, this);
+        heal = new Heal(controller, this);
+        move = new Move(controller);
     }
                         //########## START Getters and Setters ##########//
     public String getName() { return this.name; }
@@ -61,11 +64,11 @@ public abstract class Player {
         }
     }
 
-    public void heal(HealItem healItem) {
-        if (doesExceedMAX_HEALTH_POINTS(healItem.getHealPoints())) {
+    public void heal(int healPoints) {
+        if (doesExceedMAX_HEALTH_POINTS(healPoints)) {
             this.healthPoints = MAX_HEALTH_POINTS;
         } else {
-            this.healthPoints += healItem.getHealPoints();
+            this.healthPoints += healPoints;
         }
     }
 

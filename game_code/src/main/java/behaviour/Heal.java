@@ -24,6 +24,6 @@ public class Heal implements IAction {
 
     public void startHealing(HealItem healItem) {
         setAction();
-        player.heal(healItem);
+        player.heal(healItem.getHealPoints());
     }
 }
