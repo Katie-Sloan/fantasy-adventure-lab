@@ -1,4 +1,4 @@
-package Player;
+package Entity;
 
 import behaviour.IAction;
 

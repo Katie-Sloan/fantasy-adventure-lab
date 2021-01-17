@@ -1,4 +1,4 @@
-package Player.Enums;
+package Entity.Enums;
 
 public enum Weapon {
 
@@ -8,7 +8,9 @@ public enum Weapon {
     STAFF(2, 1),
     BIG_STAFF(2, 2),
     STICK(3, 3),
-    BIG_STICK(3, 6);
+    BIG_STICK(3, 6),
+    CLUB(4, 1),
+    BIG_ASS_CLUB(4, 9);
 
     private final int classNumber;
     private final int power;

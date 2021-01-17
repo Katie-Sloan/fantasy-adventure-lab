@@ -1,5 +1,5 @@
 package behaviour;
-import Player.PlayerController;
+import Entity.PlayerController;
 
 public class Move implements IAction {
 

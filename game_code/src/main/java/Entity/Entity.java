@@ -1,24 +1,25 @@
-package Player;
+package Entity;
 
-import Player.Enums.CharacterClass;
-import Player.Enums.Weapon;
+import Entity.Enums.CharacterClass;
+import Entity.Enums.Weapon;
 import behaviour.Heal;
 import behaviour.Hit;
+import behaviour.IMythicalCreature;
 import behaviour.Move;
 
-public abstract class Player {
+public abstract class Entity {
     protected PlayerController controller;
     private Hit hit;
     private String name;
     private Weapon rightHandWeapon;
-    private int healthPoints;
+    protected int healthPoints;
     private final int MAX_HEALTH_POINTS;
     private int gems;
     private final CharacterClass CHARACTER_CLASS;
     public Heal heal;
     private Move move;
 
-    public Player(String name, Weapon rightHandWeapon, int healthPoints, CharacterClass characterClass) {
+    public Entity(String name, Weapon rightHandWeapon, int healthPoints, CharacterClass characterClass) {
         this.CHARACTER_CLASS = characterClass;
         this.name = name;
         this.rightHandWeapon = rightHandWeapon;
@@ -46,7 +47,7 @@ public abstract class Player {
     }
                         //########## END Getters and Setters ##########//
 
-    public void startHitting(Player target) {
+    public void startHitting(Entity target) {
         if(getAttackPoints() == 0) return;
         hit.startHitting(getAttackPoints(), target);
     }

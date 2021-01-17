@@ -1,17 +1,17 @@
 package behaviour;
 
-import Player.Enums.HealItem;
-import Player.Player;
-import Player.PlayerController;
+import Entity.Enums.HealItem;
+import Entity.Entity;
+import Entity.PlayerController;
 
 public class Heal implements IAction {
 
     PlayerController controller;
-    Player player;
+    Entity entity;
 
-    public Heal(PlayerController controller, Player player) {
+    public Heal(PlayerController controller, Entity entity) {
         this.controller = controller;
-        this.player = player;
+        this.entity = entity;
     }
 
     public void setAction() {
@@ -24,6 +24,6 @@ public class Heal implements IAction {
 
     public void startHealing(HealItem healItem) {
         setAction();
-        player.heal(healItem.getHealPoints());
+        entity.heal(healItem.getHealPoints());
     }
 }

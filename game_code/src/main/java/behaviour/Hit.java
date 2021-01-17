@@ -1,8 +1,10 @@
 package behaviour;
 
-import Player.Enums.Weapon;
-import Player.Player;
-import Player.PlayerController;
+import Entity.Entity;
+import Entity.Enums.CharacterClass;
+import Entity.Enums.Weapon;
+import Entity.PlayerController;
+import Entity.Melee;
 
 public class Hit implements IAction {
     PlayerController controller;
@@ -19,7 +21,7 @@ public class Hit implements IAction {
 
     }
 
-    public void startHitting(int attackPoints, Player target) {
+    public void startHitting(int attackPoints, Entity target) {
         setAction();
         target.takeDamage(attackPoints);
     }

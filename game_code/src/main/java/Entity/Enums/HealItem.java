@@ -1,6 +1,4 @@
-package Player.Enums;
-
-import Player.Player;
+package Entity.Enums;
 
 public enum HealItem {
 

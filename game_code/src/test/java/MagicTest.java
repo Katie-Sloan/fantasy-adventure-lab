@@ -1,7 +1,8 @@
-import Player.Enums.CharacterClass;
-import Player.Enums.SpellType;
-import Player.Enums.Weapon;
-import Player.Magic;
+import Entity.Enums.CharacterClass;
+import Entity.Enums.SpellType;
+import Entity.Enums.Weapon;
+import Entity.Magic;
+import Entity.mythicalcreatures.Ogre;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,14 +13,13 @@ public class MagicTest {
 
     Magic juan;
     Magic zsolt;
+    Ogre robert;
 
-    //has spell
-    //get spell
-    // add spell
     @Before
     public void setUp() {
-        juan = new Magic("Juan", Weapon.BIG_STAFF, 4, CharacterClass.WARLOCK, null);
-        zsolt = new Magic("Zsolt", Weapon.BIG_STAFF, 20, CharacterClass.WARLOCK, null);
+        juan = new Magic("Juan", Weapon.BIG_STAFF, 4, CharacterClass.WARLOCK, null, null);
+        zsolt = new Magic("Zsolt", Weapon.BIG_STAFF, 20, CharacterClass.WARLOCK, null, null);
+        robert = new Ogre("Robert", Weapon.CLUB, 20, CharacterClass.MONSTER, null);
     }
 
     @Test
@@ -57,5 +57,17 @@ public class MagicTest {
         SpellType spell = zsolt.spellCast.getSpell(0);
         zsolt.spellCast.startCastingSpell(spell, juan);
         assertEquals(0, juan.getHealthPoints());
+    }
+    @Test
+    public void canAddPet() {
+        zsolt.setPet(robert);
+        assertEquals(robert, zsolt.getPet());
+    }
+    @Test
+    public void canRemovePet() {
+        zsolt.setPet(robert);
+        assertEquals(robert, zsolt.getPet());
+        zsolt.removePet();
+        assertNull(zsolt.getPet());
     }
 }

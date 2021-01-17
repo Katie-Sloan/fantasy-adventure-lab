@@ -1,13 +1,13 @@
-package Player;
+package Entity;
 
-import Player.Enums.CharacterClass;
-import Player.Enums.SpellType;
-import Player.Enums.Weapon;
+import Entity.Enums.CharacterClass;
+import Entity.Enums.SpellType;
+import Entity.Enums.Weapon;
 import behaviour.SpellCast;
 
 import java.util.ArrayList;
 
-public class Cleric extends Player {
+public class Cleric extends Entity {
     public SpellCast spellCast;
     ArrayList<SpellType> spells;
 

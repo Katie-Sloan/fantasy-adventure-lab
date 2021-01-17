@@ -1,9 +1,9 @@
-import Player.Cleric;
-import Player.Enums.CharacterClass;
-import Player.Enums.SpellType;
-import Player.Enums.Weapon;
-import Player.Magic;
-import Player.Melee;
+import Entity.Cleric;
+import Entity.Enums.CharacterClass;
+import Entity.Enums.SpellType;
+import Entity.Enums.Weapon;
+import Entity.Magic;
+import Entity.Melee;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,7 +17,7 @@ public class ClericTest {
 
     @Before
     public void setUp(){
-        juan = new Magic("Juan", Weapon.BIG_STAFF, 4, CharacterClass.WARLOCK, null);
+        juan = new Magic("Juan", Weapon.BIG_STAFF, 4, CharacterClass.WARLOCK, null, null);
         john = new Cleric("John", Weapon.STICK, 15, CharacterClass.CLERIC, null);
         colin = new Melee("Colin", Weapon.CRAP_AXE, 10, CharacterClass.BARBARIAN, Weapon.CRAP_AXE);
     }
@@ -31,5 +31,4 @@ public class ClericTest {
         john.spellCast.startCastingSpell(SpellType.HEALIARMUS, colin);
         assertEquals(8, colin.getHealthPoints());
     }
-
 }

@@ -1,7 +1,7 @@
-import Player.Enums.CharacterClass;
-import Player.Enums.HealItem;
-import Player.Enums.Weapon;
-import Player.Melee;
+import Entity.Enums.CharacterClass;
+import Entity.Enums.HealItem;
+import Entity.Enums.Weapon;
+import Entity.Melee;
 import org.junit.Before;
 import org.junit.Test;
 

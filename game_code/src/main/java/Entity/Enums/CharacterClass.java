@@ -1,4 +1,4 @@
-package Player.Enums;
+package Entity.Enums;
 
 public enum CharacterClass {
 
@@ -7,7 +7,8 @@ public enum CharacterClass {
     KNIGHT(1),
     WARLOCK(2),
     WIZARD(2),
-    CLERIC(3);
+    CLERIC(3),
+    MONSTER(4);
 
     private final int characterClass;
 

@@ -1,20 +1,20 @@
 package behaviour;
 
-import Player.Enums.SpellType;
-import Player.Player;
-import Player.PlayerController;
+import Entity.Enums.SpellType;
+import Entity.Entity;
+import Entity.PlayerController;
 
 import java.util.ArrayList;
 
 public class SpellCast implements IAction {
 
     PlayerController controller;
-    Player player;
+    Entity entity;
     private ArrayList<SpellType> spells;
 
-    public SpellCast(PlayerController controller, Player player, ArrayList<SpellType> spells) {
+    public SpellCast(PlayerController controller, Entity entity, ArrayList<SpellType> spells) {
         this.controller = controller;
-        this.player = player;
+        this.entity = entity;
         setInitialSpells(spells);
     }
 
@@ -26,7 +26,7 @@ public class SpellCast implements IAction {
 
     }
 
-    public void startCastingSpell(SpellType spell, Player target) {
+    public void startCastingSpell(SpellType spell, Entity target) {
         setAction();
 
         switch (spell.getType()) { // type of SpellCategory
@@ -39,16 +39,16 @@ public class SpellCast implements IAction {
         }
     }
 
-    private void startCastingAttack(SpellType spell, Player target) {
+    private void startCastingAttack(SpellType spell, Entity target) {
         target.takeDamage(calculateDamage(spell));
     }
 
-    private void startCastingHeal(SpellType spell, Player target) {
-        target.heal(spell.getPower() + player.getRightHandWeapon().getPower());
+    private void startCastingHeal(SpellType spell, Entity target) {
+        target.heal(spell.getPower() + entity.getRightHandWeapon().getPower());
     }
 
     private int calculateDamage(SpellType spell) {
-        return spell.getPower() + player.getRightHandWeapon().getPower();
+        return spell.getPower() + entity.getRightHandWeapon().getPower();
     }
 
     public int spellCount() {

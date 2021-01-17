@@ -1,4 +1,4 @@
-package Player.Enums;
+package Entity.Enums;
 
 public enum SpellType {
 

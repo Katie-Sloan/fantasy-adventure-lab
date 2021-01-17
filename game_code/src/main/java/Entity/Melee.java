@@ -1,16 +1,16 @@
-package Player;
+package Entity;
 
-import Player.Enums.CharacterClass;
-import Player.Enums.Weapon;
+import Entity.Enums.CharacterClass;
+import Entity.Enums.Weapon;
 import behaviour.Hit;
 import behaviour.Move;
 
-public class Melee extends Player {
+public class Melee extends Entity {
 
     private Hit hit;
     private Move move;
     private Weapon leftHandWeapon;
-    private Player target;
+    private Entity target;
     public Melee(String name, Weapon rightHandWeapon, int healthPoints, CharacterClass characterClass, Weapon leftHandWeapon) {
         super(name, rightHandWeapon, healthPoints, characterClass);
         this.leftHandWeapon = leftHandWeapon;
@@ -18,8 +18,8 @@ public class Melee extends Player {
         move = new Move(controller);
     }
                                     //########## START Getters and Setters ##########//
-    public Player getTarget() { return target; }
-    public void setTarget(Player target) { this.target = target; }
+    public Entity getTarget() { return target; }
+    public void setTarget(Entity target) { this.target = target; }
     public Weapon getLeftHandWeapon() {
         return leftHandWeapon;
     }
