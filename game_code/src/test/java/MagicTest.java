@@ -5,7 +5,6 @@ import Entity.Magic;
 import Entity.mythicalcreatures.Ogre;
 import org.junit.Before;
 import org.junit.Test;
-import sun.jvm.hotspot.memory.Space;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
