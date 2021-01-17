@@ -1,7 +1,9 @@
 package rooms;
 
+import Entity.Entity;
 import Entity.Enums.HealItem;
 import behaviour.IMythicalCreature;
+import org.omg.CORBA.IMP_LIMIT;
 
 import java.util.ArrayList;
 
@@ -12,17 +14,24 @@ public class Room {
     ArrayList<HealItem> healItems;
     ArrayList<Integer> gems;
     boolean completed;
+    RoomController controller;
+    Entity player;
+    String message = "Default Message";
 
-    public Room(String name, ArrayList<IMythicalCreature> enemies, ArrayList<HealItem> healItems, ArrayList<Integer> gems) {
+    public Room(String name, ArrayList<IMythicalCreature> enemies, ArrayList<HealItem> healItems,
+                ArrayList<Integer> gems, RoomController controller) {
         this.name = name;
         setInitialEnemies(enemies);
         setInitialHealItems(healItems);
         setInitialGems(gems);
         this.completed = false;
+        this.controller = controller;
     }
+
 
     public void addEnemy(IMythicalCreature enemy) {
         this.enemies.add(enemy);
+        enemy.setRoom(this);
     }
 
     public void addGemPile(Integer gems) {
@@ -53,6 +62,14 @@ public class Room {
             setCompleted(true);
         }
         return enemy;
+    }
+    public void removeEnemy(IMythicalCreature enemy) {
+        if (enemies.indexOf(enemy) >= (this.enemies.size())) return;
+        int indexOfThing = enemies.indexOf(enemy);
+        this.enemies.remove(indexOfThing);
+        if(isCompleted()) {
+            setCompleted(true);
+        }
     }
 
     public Integer removeGem(int index) {
@@ -102,6 +119,7 @@ public class Room {
 
     public void setCompleted(boolean completed) {
         this.completed = completed;
+        this.controller.changeRoom(this);
     }
 
     public IMythicalCreature getEnemy(int indexPosition) {
@@ -125,4 +143,20 @@ public class Room {
     public int getEnemyCount() {
         return this.enemies.size();
     }
+
+    public void addPlayer(Entity player) {
+        this.player = player;
+    }
+    public void removePlayer() {
+        this.player = null;
+    }
+
+    public String getMessage() {
+        return this.message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
 }

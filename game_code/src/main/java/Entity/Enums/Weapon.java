@@ -7,6 +7,7 @@ public enum Weapon {
     CRAP_AXE(1, 2),
     STAFF(2, 1),
     BIG_STAFF(2, 2),
+    DUMBLEDORES_WAND(2, 20),
     STICK(3, 3),
     BIG_STICK(3, 6),
     CLUB(4, 1),

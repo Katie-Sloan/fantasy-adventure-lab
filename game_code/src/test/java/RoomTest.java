@@ -1,23 +1,46 @@
 import Entity.Enums.CharacterClass;
 import Entity.Enums.HealItem;
+import Entity.Enums.SpellType;
 import Entity.Enums.Weapon;
+import Entity.Magic;
+import Entity.mythicalcreatures.Dragon;
 import Entity.mythicalcreatures.Ogre;
+import Entity.mythicalcreatures.Pixie;
 import behaviour.Heal;
 import org.junit.Before;
 import org.junit.Test;
 import rooms.Room;
+import rooms.RoomController;
 
 import static org.junit.Assert.*;
 
 public class RoomTest {
 
     Room codeClan;
+    Room codeClan1;
+    Room codeClan2;
     Ogre robert;
+    Ogre jeff;
+    Ogre george;
+    Magic katie;
+    RoomController controller;
 
     @Before
     public void setUp() {
-        codeClan = new Room("CodeClan", null, null, null);
+        katie = new Magic("Katie", Weapon.DUMBLEDORES_WAND, 10, CharacterClass.WIZARD, null, null);
+        controller = new RoomController(katie);
+        codeClan = new Room("CodeClan", null, null, null, controller);
+        codeClan1 = new Room("CodeClan1", null, null, null, controller);
+        codeClan2 = new Room("CodeClan2", null, null, null, controller);
         robert = new Ogre("Robert", Weapon.CLUB, 20, CharacterClass.MONSTER, null);
+        jeff = new Ogre("Jeff", Weapon.CLUB, 20, CharacterClass.MONSTER, null);
+        george = new Ogre("George", Weapon.CLUB, 20, CharacterClass.MONSTER, null);
+        this.controller.addRoom(codeClan);
+        codeClan.setMessage("Start your wonderful journey here FOOL");
+        this.controller.addRoom(codeClan1);
+        codeClan1.setMessage("You've completed room 1 - now move onto room 2!");
+        this.controller.addRoom(codeClan2);
+        codeClan2.setMessage("You've completed room 2 - now move onto the final room!");
     }
 
     @Test
@@ -128,5 +151,19 @@ public class RoomTest {
         assertTrue(codeClan.getCompleted());
     }
 
+    @Test
+    public void canCompleteGame(){
+        controller.start();
+        codeClan.addEnemy(robert);
+        assertEquals(0, controller.getCurrentRoomIndex());
+        katie.spellCast.startCastingSpell(SpellType.EXPELLIARMUS, robert);
+        assertEquals(1, controller.getCurrentRoomIndex());
+        codeClan1.addEnemy(jeff);
+        katie.spellCast.startCastingSpell(SpellType.EXPELLIARMUS, jeff);
+        assertEquals(2, controller.getCurrentRoomIndex());
+        codeClan2.addEnemy(george);
+        katie.spellCast.startCastingSpell(SpellType.EXPELLIARMUS, george);
+        assertTrue(controller.areAllLevelsCompleted());
+    }
 
 }
