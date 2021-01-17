@@ -15,7 +15,7 @@ public abstract class Player {
     private final int MAX_HEALTH_POINTS;
     private int gems;
     private final CharacterClass CHARACTER_CLASS;
-    private Heal heal;
+    public Heal heal;
 
     public Player(String name, Weapon rightHandWeapon, int healthPoints, CharacterClass characterClass) {
         this.CHARACTER_CLASS = characterClass;
