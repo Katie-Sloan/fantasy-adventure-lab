@@ -27,17 +27,8 @@ public class Room {
         this.enemies.add(enemy);
     }
 
-    public IMythicalCreature removeEnemy(int index) {
-        return this.enemies.remove(index);
-    }
-
-    public void addGemPile(int index, Integer element) {
-        this.gems.add(index, element);
-    }
-
-
-    public Integer removeGemPile(int index) {
-        return this.gems.remove(index);
+    public void addGemPile(Integer gems) {
+        this.gems.add(gems);
     }
 
     public void addHealItem(int index, HealItem element) {
@@ -49,7 +40,31 @@ public class Room {
     }
 
     public HealItem removeHealItem(int index) {
-        return this.healItems.remove(index);
+        HealItem healItem = this.healItems.remove(index);
+        if(isCompleted()) {
+            setCompleted(true);
+        }
+        return healItem;
+    }
+
+    public IMythicalCreature removeEnemy(int index) {
+        IMythicalCreature enemy = this.enemies.remove(index);
+        if(isCompleted()) {
+            setCompleted(true);
+        }
+        return enemy;
+    }
+
+    public Integer removeGem(int index) {
+        Integer gem = this.gems.remove(index);
+        if(isCompleted()) {
+            setCompleted(true);
+        }
+        return gem;
+    }
+
+    private boolean isCompleted() {
+        return healItems.size() == 0 && enemies.size() == 0 && gems.size() == 0;
     }
 
     private void setInitialEnemies(ArrayList<IMythicalCreature> enemies) {
@@ -80,7 +95,7 @@ public class Room {
         return this.name;
     }
 
-    public boolean isCompleted() {
+    public boolean getCompleted() {
         return completed;
     }
 
@@ -94,5 +109,9 @@ public class Room {
 
     public HealItem getHealItem(int indexPosition) {
         return this.healItems.get(indexPosition);
+    }
+
+    public int getGemCount() {
+        return this.gems.size();
     }
 }

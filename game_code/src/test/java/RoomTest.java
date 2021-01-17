@@ -40,6 +40,7 @@ public class RoomTest {
 
     @Test
     public void canAddGemsPilesToGems() {
-        assertEquals("CodeClan", this.codeClan.getName());
+        codeClan.addGemPile(3);
+        assertEquals(1, this.codeClan.getGemCount());
     }
 }
