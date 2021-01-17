@@ -35,7 +35,7 @@ public class MeleeTest {
     }
     @Test
     public void isDwarfClass() {
-        assertEquals(CharacterClass.DWARF, dwarf.getCharacterClass());
+        assertEquals(CharacterClass.DWARF, dwarf.getCHARACTER_CLASS());
     }
 
     // weapon true and false

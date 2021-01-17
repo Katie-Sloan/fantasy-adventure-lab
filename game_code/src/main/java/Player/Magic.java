@@ -1,34 +1,37 @@
 package Player;
 
 import Player.Enums.CharacterClass;
-import Player.Enums.Spell;
+import Player.Enums.SpellType;
 import Player.Enums.Weapon;
+import behaviour.Spell;
 
 import java.util.ArrayList;
 
 public class Magic extends Player{
-    private ArrayList<Spell> spells;
+    private ArrayList<SpellType> spells;
 //    private MythicalCreature pet;
+public Spell spell;
 
-    public Magic(String name, Weapon rightHandWeapon, int healthPoints, CharacterClass characterClass, ArrayList<Spell> spells) {
+    public Magic(String name, Weapon rightHandWeapon, int healthPoints, CharacterClass characterClass, ArrayList<SpellType> spells) {
         super(name, rightHandWeapon, healthPoints, characterClass);
         setInitialSpells(spells);
+        spell = new Spell(controller, this);
     }
 
     public int spellCount() {
         return this.spells.size();
     }
 
-    public void addSpell(Spell spell) {
+    public void addSpell(SpellType spell) {
         this.spells.add(spell);
     }
 
-    public Spell getSpell(int index) {
+    public SpellType getSpell(int index) {
         return spells.get(index);
     }
 
-    public Spell hasSpell(Spell spellToFind) {
-        for (Spell spell : this.spells) {
+    public SpellType hasSpell(SpellType spellToFind) {
+        for (SpellType spell : this.spells) {
             if (spell == spellToFind) {
                 return spell;
             }
@@ -37,15 +40,12 @@ public class Magic extends Player{
     }
 
 
-    public void castSpell(Spell spell) { }
+    public void castSpell(SpellType spell) { }
 
-//    public void castSpell(Spell spell, MythicalCreature opponent) {
-//        opponent.takeDamage(spell.getDamage(), opponent);
-//    }
 
-    private void setInitialSpells(ArrayList<Spell> spells) {
+    private void setInitialSpells(ArrayList<SpellType> spells) {
         if(spells == null) {
-            this.spells = new ArrayList<Spell>();
+            this.spells = new ArrayList<SpellType>();
         }
         else {
             this.spells = spells;

@@ -1,15 +1,14 @@
 package Player.Enums;
 
-import Player.Player;
-
-public enum Spell {
+public enum SpellType {
 
     EXPELLIARMUS(2),
-    WINGARDIUM_LEVIOSA(3);
+    WINGARDIUM_LEVIOSA(3),
+    HEALIARMUS(1);
 
     private final int damage;
 
-    Spell(int damage) {
+    SpellType(int damage) {
         this.damage = damage;
     }
 
