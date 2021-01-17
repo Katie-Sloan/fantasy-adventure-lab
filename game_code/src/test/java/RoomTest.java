@@ -55,4 +55,19 @@ public class RoomTest {
         System.out.println(this.codeClan.getEnemyCount());
         assertNull(this.codeClan.getEnemy(0));
     }
+    @Test
+    public void canRemoveEnemiesFromRoom_() {
+        codeClan.addEnemy(robert);
+        codeClan.addEnemy(robert);
+        codeClan.addEnemy(robert);
+        assertEquals(robert, this.codeClan.getEnemy(0));
+        codeClan.removeEnemy(2);
+        assertEquals(2, this.codeClan.getEnemyCount());
+        codeClan.removeEnemy(1);
+        assertEquals(robert, this.codeClan.getEnemy(0));
+        assertNull(codeClan.removeEnemy(1));
+        assertEquals(1, this.codeClan.getEnemyCount());
+        codeClan.removeEnemy(0);
+        assertNull(this.codeClan.getEnemy(0));
+    }
 }
