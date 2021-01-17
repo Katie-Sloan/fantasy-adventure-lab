@@ -91,8 +91,10 @@ public class RoomTest {
         codeClan.addEnemy(robert);
         codeClan.addGemPile(4);
         codeClan.addHealItem(HealItem.HERB);
+        codeClan.addHealItem(HealItem.HERB);
         codeClan.removeEnemy(0);
         codeClan.removeGem(0);
+        codeClan.removeHealItem(0);
         assertFalse(codeClan.getCompleted());
         codeClan.removeHealItem(0);
         assertTrue(codeClan.getCompleted());
@@ -103,8 +105,10 @@ public class RoomTest {
         codeClan.addEnemy(robert);
         codeClan.addHealItem(HealItem.HERB);
         codeClan.addGemPile(4);
+        codeClan.addGemPile(4);
         codeClan.removeEnemy(0);
         codeClan.removeHealItem(0);
+        codeClan.removeGem(0);
         assertFalse(codeClan.getCompleted());
         codeClan.removeGem(0);
         assertTrue(codeClan.getCompleted());
@@ -113,10 +117,12 @@ public class RoomTest {
     @Test
     public void canCompleteRoom__() {
         codeClan.addEnemy(robert);
+        codeClan.addEnemy(robert);
         codeClan.addGemPile(4);
         codeClan.addHealItem(HealItem.HERB);
         codeClan.removeGem(0);
         codeClan.removeHealItem(0);
+        codeClan.removeEnemy(0);
         assertFalse(codeClan.getCompleted());
         codeClan.removeEnemy(0);
         assertTrue(codeClan.getCompleted());
