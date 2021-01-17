@@ -2,12 +2,12 @@ import Entity.Enums.CharacterClass;
 import Entity.Enums.HealItem;
 import Entity.Enums.Weapon;
 import Entity.mythicalcreatures.Ogre;
+import behaviour.Heal;
 import org.junit.Before;
 import org.junit.Test;
 import rooms.Room;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 public class RoomTest {
 
@@ -47,12 +47,9 @@ public class RoomTest {
 
     @Test
     public void canRemoveEnemiesFromRoom() {
-        System.out.println(this.codeClan.getEnemyCount());
         codeClan.addEnemy(robert);
-        System.out.println(this.codeClan.getEnemyCount());
         assertEquals(robert, this.codeClan.getEnemy(0));
         codeClan.removeEnemy(0);
-        System.out.println(this.codeClan.getEnemyCount());
         assertNull(this.codeClan.getEnemy(0));
     }
     @Test
@@ -70,4 +67,60 @@ public class RoomTest {
         codeClan.removeEnemy(0);
         assertNull(this.codeClan.getEnemy(0));
     }
+
+    @Test
+    public void canRemoveHealItemsFromRoom() {
+        codeClan.addHealItem(HealItem.HERB);
+        assertEquals(HealItem.HERB, this.codeClan.getHealItem(0));
+        codeClan.removeHealItem(0);
+        assertNull(this.codeClan.getHealItem(0));
+    }
+
+    @Test
+    public void canRemoveGemsFromRoom() {
+        codeClan.addGemPile(4);
+        assertEquals(1, this.codeClan.getGemCount());
+        assertEquals(4, (long) this.codeClan.getGemPile(0));
+        codeClan.removeGem(0);
+        assertEquals(0, this.codeClan.getGemCount());
+        assertNull(this.codeClan.getGemPile(0));
+    }
+
+    @Test
+    public void canCompleteRoom() {
+        codeClan.addEnemy(robert);
+        codeClan.addGemPile(4);
+        codeClan.addHealItem(HealItem.HERB);
+        codeClan.removeEnemy(0);
+        codeClan.removeGem(0);
+        assertFalse(codeClan.getCompleted());
+        codeClan.removeHealItem(0);
+        assertTrue(codeClan.getCompleted());
+    }
+
+    @Test
+    public void canCompleteRoom_() {
+        codeClan.addEnemy(robert);
+        codeClan.addHealItem(HealItem.HERB);
+        codeClan.addGemPile(4);
+        codeClan.removeEnemy(0);
+        codeClan.removeHealItem(0);
+        assertFalse(codeClan.getCompleted());
+        codeClan.removeGem(0);
+        assertTrue(codeClan.getCompleted());
+    }
+
+    @Test
+    public void canCompleteRoom__() {
+        codeClan.addEnemy(robert);
+        codeClan.addGemPile(4);
+        codeClan.addHealItem(HealItem.HERB);
+        codeClan.removeGem(0);
+        codeClan.removeHealItem(0);
+        assertFalse(codeClan.getCompleted());
+        codeClan.removeEnemy(0);
+        assertTrue(codeClan.getCompleted());
+    }
+
+
 }

@@ -38,6 +38,7 @@ public class Room {
     }
 
     public HealItem removeHealItem(int index) {
+        if (index >= (this.healItems.size())) return null;
         HealItem healItem = this.healItems.remove(index);
         if(isCompleted()) {
             setCompleted(true);
@@ -46,7 +47,7 @@ public class Room {
     }
 
     public IMythicalCreature removeEnemy(int index) {
-        if (index >= (this.enemies.size() )) return null;
+        if (index >= (this.enemies.size())) return null;
         IMythicalCreature enemy = this.enemies.remove(index);
         if(isCompleted()) {
             setCompleted(true);
@@ -55,6 +56,7 @@ public class Room {
     }
 
     public Integer removeGem(int index) {
+        if (index >= (this.gems.size())) return null;
         Integer gem = this.gems.remove(index);
         if(isCompleted()) {
             setCompleted(true);
@@ -103,11 +105,16 @@ public class Room {
     }
 
     public IMythicalCreature getEnemy(int indexPosition) {
-        if(getEnemyCount() == 0) return null;
+        if (indexPosition >= (this.enemies.size())) return null;
         return this.enemies.get(indexPosition);
+    }
+    public Integer getGemPile(int indexPosition) {
+        if (indexPosition >= (this.gems.size())) return null;
+        return this.gems.get(indexPosition);
     }
 
     public HealItem getHealItem(int indexPosition) {
+        if (indexPosition >= (this.healItems.size())) return null;
         return this.healItems.get(indexPosition);
     }
 
