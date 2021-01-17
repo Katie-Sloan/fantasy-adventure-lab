@@ -32,7 +32,7 @@ public class Move implements IAction {
         if(positionX == 100) return;
         positionX++;
     }
-    public void moveDown() {
+    public void moveLeft() {
         if(positionX == 0) return;
         positionX--;
     }
