@@ -5,6 +5,7 @@ import Entity.Magic;
 import Entity.mythicalcreatures.Ogre;
 import org.junit.Before;
 import org.junit.Test;
+import sun.jvm.hotspot.memory.Space;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -68,6 +69,15 @@ public class MagicTest {
         zsolt.setPet(robert);
         assertEquals(robert, zsolt.getPet());
         zsolt.removePet();
+        assertNull(zsolt.getPet());
+    }
+    @Test
+    public void removesPetWhenDead() {
+        juan.spellCast.addSpell(SpellType.EXPELLIARMUS);
+        zsolt.setPet(robert);
+        for (int i = 0; i < 10; i++) {
+            juan.spellCast.startCastingSpell(SpellType.EXPELLIARMUS, robert);
+        }
         assertNull(zsolt.getPet());
     }
 }
